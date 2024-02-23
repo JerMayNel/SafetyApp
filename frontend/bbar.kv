@@ -1,0 +1,67 @@
+BoxLayout:
+    orientation: 'vertical'
+
+    MDBottomAppBar:
+        title: "Bottom Navbar"
+        md_bg_color: 31 / 255, 31 / 255, 31 / 255, 1
+        specific_text_color: 1,1,1,1
+        elevation: 16
+
+    MDBottomNavigation:
+        #color stuff
+        panel_color: 31 / 255, 31 / 255, 31 / 255, 1
+        elevation: 16
+
+        MDBottomNavigationItem:
+            name: 'screen 1'
+            text: "Button"
+            icon: 'shield'
+
+
+            RelativeLayout:
+                MDIconButton:
+                    icon: 'shield-outline'
+                    pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+                    size_hint: None, None
+                    size: dp(500), dp(500)  # Adjust the size
+                    theme_text_color: "Custom"
+                    text_color: (32 / 255, 26 / 255, 48 / 255, 1)  # Dark Blue (#201A30)
+                    md_bg_color: (0, 1, 1, 1)  # Cyan color
+                    # Adjust the size of the icon
+                    md_bg_color: app.theme_cls.primary_color
+                    icon_size: dp(200)
+
+                MDLabel:
+                    text: "Press button for emergency"
+                    halign: 'center'
+                    pos_hint: {'center_x': 0.5, 'top': 0.7}
+
+
+
+        MDBottomNavigationItem:
+            name: 'screen 2'
+            text: "Contacts"
+            icon: 'contacts-outline'
+
+            MDLabel:
+                text: "contacts here!"
+                halign: 'center'
+
+
+        MDBottomNavigationItem:
+            name: 'screen 3'
+            text: "Map"
+            icon: 'map-marker'
+
+            MDLabel:
+                text: "google maps here if possible"
+                halign: 'center'
+
+        MDBottomNavigationItem:
+            name: 'screen 4'
+            text: "Profile"
+            icon: 'account-circle-outline'
+
+            MDLabel:
+                text: "profile here"
+                halign: 'center'
