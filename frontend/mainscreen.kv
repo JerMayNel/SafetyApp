@@ -2,21 +2,19 @@ BoxLayout:
     orientation: 'vertical'
 
     MDBottomAppBar:
-        title: "Bottom Navbar"
         md_bg_color: 31 / 255, 31 / 255, 31 / 255, 1
         specific_text_color: 1,1,1,1
-        elevation: 16
+        elevation: 12
 
     MDBottomNavigation:
         #color stuff
         panel_color: 31 / 255, 31 / 255, 31 / 255, 1
-        elevation: 16
+        elevation: 12
 
         MDBottomNavigationItem:
             name: 'screen 1'
             text: "Button"
             icon: 'shield'
-
 
             RelativeLayout:
                 MDIconButton:
@@ -25,18 +23,18 @@ BoxLayout:
                     size_hint: None, None
                     size: dp(500), dp(500)  # Adjust the size
                     theme_text_color: "Custom"
-                    text_color: (32 / 255, 26 / 255, 48 / 255, 1)  # Dark Blue (#201A30)
-                    md_bg_color: (0, 1, 1, 1)  # Cyan color
+                    text_color: (31 / 255, 31 / 255, 31 / 255, 1)
                     # Adjust the size of the icon
                     md_bg_color: app.theme_cls.primary_color
-                    icon_size: dp(200)
+                    icon_size: dp(180)
+                    elevation: 12
 
                 MDLabel:
-                    text: "Press button for emergency"
+                    text: "PRESS BUTTON FOR EMERGENCY"
                     halign: 'center'
                     pos_hint: {'center_x': 0.5, 'top': 0.7}
-
-
+                    bold:True
+                    font_size: 20
 
         MDBottomNavigationItem:
             name: 'screen 2'
