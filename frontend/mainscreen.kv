@@ -1,15 +1,12 @@
 BoxLayout:
     orientation: 'vertical'
 
-    MDBottomAppBar:
-        md_bg_color: 31 / 255, 31 / 255, 31 / 255, 1
-        specific_text_color: 1,1,1,1
-        elevation: 12
-
     MDBottomNavigation:
         #color stuff
         panel_color: 31 / 255, 31 / 255, 31 / 255, 1
         elevation: 12
+        font_name: "Gotham-Bold.otf"
+        selected_color_background: 0, 0, 1, 0
 
         MDBottomNavigationItem:
             name: 'screen 1'
@@ -19,7 +16,7 @@ BoxLayout:
             RelativeLayout:
                 MDIconButton:
                     icon: 'shield-outline'
-                    pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+                    pos_hint: {'center_x': 0.5, 'center_y': 0.4}
                     size_hint: None, None
                     size: dp(500), dp(500)  # Adjust the size
                     theme_text_color: "Custom"
@@ -32,9 +29,29 @@ BoxLayout:
                 MDLabel:
                     text: "PRESS BUTTON FOR EMERGENCY"
                     halign: 'center'
-                    pos_hint: {'center_x': 0.5, 'top': 0.7}
+                    pos_hint: {'center_x': 0.5, 'top': 0.65}
                     bold:True
                     font_size: 20
+                    font_name: "Gotham-Bold.otf"
+
+                MDLabel:
+                    text: "   Safety App"
+                    pos_hint: {'center_y': 0.9}
+                    bold:True
+                    font_size: 40
+                    font_name: "Gotham-Bold.otf"
+
+                MDLabel:
+                    text: "       Note the location service MUST BE ON"
+                    pos_hint: {'center_y': 0.83}
+                    font_size: 17
+                    font_name: "GothamOffice-Bold.otf"
+
+                MDLabel:
+                    text: "       MAKE SURE YOU HAVE INTERNET ACCESS"
+                    pos_hint: {'center_y': 0.795}
+                    font_size: 17
+                    font_name: "GothamOffice-Bold.otf"
 
         MDBottomNavigationItem:
             name: 'screen 2'
