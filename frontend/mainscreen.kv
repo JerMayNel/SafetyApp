@@ -129,24 +129,70 @@ ScreenManager:
 <AddContactsScreen>
     name: 'AddContacts'
 
-    BoxLayout:
-        orientation: 'horizontal'
-        spacing: dp(1)
-        pos_hint: {'center_y': 0.9}
+    MDBoxLayout:
+        orientation: 'vertical'
 
-        MDIconButton:
-            icon: "arrow-left-circle"
-            style: "outlined"
-            theme_text_color: "Custom"
-            text_color: 'white'
-            theme_font_size: "Custom"
-            icon_size: dp(42)
-            elevation: 12
-            on_press: root.manager.current = 'Main'
-            pos_hint: {'center_y': 0.5}
+        MDTopAppBar:
+            specific_text_color: 1, 1, 1, 1
+            title: "[font=HelveticaWorld-Bold.ttf]Add Contact[/font]"
+            anchor_title: "left"
+            font_name: "HelveticaWorld-Bold.ttf"
+            type_height: "small"
+            left_action_items: [["arrow-left", lambda x: setattr(root.manager, 'current', 'Main')]]
+            right_action_items: [["check", lambda x: setattr(root.manager, 'current', 'Main')]]
+            md_bg_color: (18 / 255, 18 / 255, 18 / 255, 1)
+            elevation: 0
+
+        ScrollView:
+
+    MDBoxLayout:
+        orientation: 'vertical'
+
+        MDIcon:
+            icon: "account-circle-outline"
+            pos_hint: {"center_x": .5}
+            font_size: dp(50)
+            size_hint_x: None
+            width: 200
 
         MDLabel:
-            text: "Add Contact"
-            bold: True
-            font_size: 30
+            text: "Emergency Contact 1"
+            halign: 'center'
+            bold:True
+            font_size: 17
             font_name: "HelveticaWorld-Bold.ttf"
+            size_hint_y: None
+            height: self.texture_size[1]
+            padding_y: 15
+
+        MDTextField:
+            id: phone_number
+            hint_text: "Phone Number"
+            icon_left: 'phone'
+            size_hint_x: None
+            width: 250
+            font_size: 20
+            pos_hint: {"center_x": .5}
+            input_filter: "int"
+
+        MDTextField:
+            id: name
+            hint_text: "Name (Optional)"
+            icon_left: 'account-circle-outline'
+            size_hint_x: None
+            width: 250
+            font_size: 20
+            pos_hint: {"center_x": .5}
+
+        MDTextField:
+            id: email
+            hint_text: "Email (Optional)"
+            icon_left: 'email-outline'
+            size_hint_x: None
+            width: 250
+            font_size: 20
+            pos_hint: {"center_x": .5}
+
+        Widget:
+            size_hint_y: None
+            height: 250
