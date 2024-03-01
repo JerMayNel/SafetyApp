@@ -1,122 +1,152 @@
-BoxLayout:
-    orientation: 'vertical'
+ScreenManager:
+    MainScreen:
+    AddContactsScreen:
 
-    MDBottomNavigation:
-        #color stuff
-        panel_color: 31 / 255, 31 / 255, 31 / 255, 1
-        elevation: 12
-        font_name: "HelveticaWorld-Bold.ttf"
-        selected_color_background: 0, 0, 1, 0
+<MainScreen>:
+    name: 'Main'
+    BoxLayout:
+        orientation: 'vertical'
 
-        MDBottomNavigationItem:
-            name: 'screen 1'
-            text: "Button"
-            icon: 'shield'
+        MDBottomNavigation:
+            #color stuff
+            panel_color: 31 / 255, 31 / 255, 31 / 255, 1
+            elevation: 12
+            font_name: "HelveticaWorld-Bold.ttf"
+            selected_color_background: 0, 0, 1, 0
 
-            RelativeLayout:
-                MDIconButton:
-                    icon: 'shield-outline'
-                    pos_hint: {'center_x': 0.5, 'center_y': 0.4}
-                    size_hint: None, None
-                    size: '600dp', '600dp'  # Adjust the size
-                    theme_text_color: "Custom"
-                    text_color: (31 / 255, 31 / 255, 31 / 255, 1)
-                    # Adjust the size of the icon
-                    md_bg_color: app.theme_cls.primary_color
-                    icon_size: dp(180)
-                    elevation: 12
+            MDBottomNavigationItem:
+                name: 'screen 1'
+                text: "Button"
+                icon: 'shield'
+
+                RelativeLayout:
+                    MDIconButton:
+                        icon: 'shield-outline'
+                        pos_hint: {'center_x': 0.5, 'center_y': 0.4}
+                        size_hint: None, None
+                        size: '600dp', '600dp'  # Adjust the size
+                        theme_text_color: "Custom"
+                        text_color: (31 / 255, 31 / 255, 31 / 255, 1)
+                        # Adjust the size of the icon
+                        md_bg_color: app.theme_cls.primary_color
+                        icon_size: dp(180)
+                        elevation: 12
+
+                    MDLabel:
+                        text: "PRESS BUTTON FOR EMERGENCY"
+                        halign: 'center'
+                        pos_hint: {'center_x': 0.5, 'top': 0.65}
+                        bold:True
+                        font_size: 20
+                        font_name: "HelveticaWorld-Bold.ttf"
+
+                    MDLabel:
+                        text: "    Safety App"
+                        pos_hint: {'center_y': 0.9}
+                        bold:True
+                        font_size: 30
+                        font_name: "HelveticaWorld-Bold.ttf"
+
+                    MDLabel:
+                        text: "       Note the location service MUST BE ON"
+                        pos_hint: {'center_y': 0.83}
+                        font_size: 17
+                        font_name: "HelveticaWorld-Regular.ttf"
+
+                    MDLabel:
+                        text: "       MAKE SURE YOU HAVE INTERNET ACCESS"
+                        pos_hint: {'center_y': 0.795}
+                        font_size: 17
+                        font_name: "HelveticaWorld-Regular.ttf"
+
+            MDBottomNavigationItem:
+                name: 'screen 2'
+                text: "Contacts"
+                icon: 'contacts-outline'
 
                 MDLabel:
-                    text: "PRESS BUTTON FOR EMERGENCY"
-                    halign: 'center'
-                    pos_hint: {'center_x': 0.5, 'top': 0.65}
-                    bold:True
-                    font_size: 20
-                    font_name: "HelveticaWorld-Bold.ttf"
-
-                MDLabel:
-                    text: "    Safety App"
+                    text: "    Contacts"
                     pos_hint: {'center_y': 0.9}
                     bold:True
                     font_size: 30
                     font_name: "HelveticaWorld-Bold.ttf"
 
-                MDLabel:
-                    text: "       Note the location service MUST BE ON"
-                    pos_hint: {'center_y': 0.83}
-                    font_size: 17
-                    font_name: "HelveticaWorld-Regular.ttf"
+                MDIconButton:
+                    icon: "plus-circle-outline"
+                    style: "outlined"
+                    theme_text_color: "Custom"
+                    text_color: 'white'
+                    theme_font_size: "Custom"
+                    pos_hint: {'right': 0.985, 'bottom': 1}
+                    icon_size: dp(50)
+                    elevation: 12
+                    on_press: root.manager.current = 'AddContacts'
+
+            MDBottomNavigationItem:
+                name: 'screen 3'
+                text: "Map"
+                icon: 'map-marker'
 
                 MDLabel:
-                    text: "       MAKE SURE YOU HAVE INTERNET ACCESS"
-                    pos_hint: {'center_y': 0.795}
-                    font_size: 17
-                    font_name: "HelveticaWorld-Regular.ttf"
+                    text: "    Location"
+                    pos_hint: {'center_y': 0.9}
+                    bold:True
+                    font_size: 30
+                    font_name: "HelveticaWorld-Bold.ttf"
 
-        MDBottomNavigationItem:
-            name: 'screen 2'
-            text: "Contacts"
-            icon: 'contacts-outline'
+                MDCard:
+                    style: "outlined"
+                    orientation: 'vertical'
+                    padding: "8dp"
+                    spacing: "8dp"
+                    elevation: 10
+                    size_hint_y: None
+                    size: "400dp", "400dp"
+                    pos_hint: {"center_x": .5, 'center_y': .4}
 
-            MDLabel:
-                text: "    Contacts"
-                pos_hint: {'center_y': 0.9}
-                bold:True
-                font_size: 30
-                font_name: "HelveticaWorld-Bold.ttf"
+                    MapView:
+                        id: map_view
+                        lat: 15.98838593868359  # Latitude for your initial map position
+                        lon: 120.57362818692708  # Longitude for your initial map position
+                        zoom: 18  # Initial zoom level
 
-            MDIconButton:
-                icon: "plus-circle-outline"
-                style: "outlined"
-                theme_text_color: "Custom"
-                text_color: 'white'
-                theme_font_size: "Custom"
-                pos_hint: {'right': 0.985, 'bottom': 1}
-                icon_size: dp(50)
-                elevation: 12
+                        MapMarker:
+                            lat: 15.98838593868359
+                            lon: 120.57362818692708
 
-                # Apply function for the button to add contacts (gui for now)
+            MDBottomNavigationItem:
+                name: 'screen 4'
+                text: "Profile"
+                icon: 'account-circle-outline'
 
-        MDBottomNavigationItem:
-            name: 'screen 3'
-            text: "Map"
-            icon: 'map-marker'
+                MDLabel:
+                    text: "    Profile"
+                    pos_hint: {'center_y': 0.9}
+                    bold:True
+                    font_size: 30
+                    font_name: "HelveticaWorld-Bold.ttf"
 
-            MDLabel:
-                text: "    Location"
-                pos_hint: {'center_y': 0.9}
-                bold:True
-                font_size: 30
-                font_name: "HelveticaWorld-Bold.ttf"
+<AddContactsScreen>
+    name: 'AddContacts'
 
-            MDCard:
-                style: "outlined"
-                orientation: 'vertical'
-                padding: "8dp"
-                spacing: "8dp"
-                elevation: 10
-                size_hint_y: None
-                size: "400dp", "400dp"
-                pos_hint: {"center_x": .5, 'center_y': .4}
+    BoxLayout:
+        orientation: 'horizontal'
+        spacing: dp(1)
+        pos_hint: {'center_y': 0.9}
 
-                MapView:
-                    id: map_view
-                    lat: 15.98838593868359  # Latitude for your initial map position
-                    lon: 120.57362818692708  # Longitude for your initial map position
-                    zoom: 18  # Initial zoom level
+        MDIconButton:
+            icon: "arrow-left-circle"
+            style: "outlined"
+            theme_text_color: "Custom"
+            text_color: 'white'
+            theme_font_size: "Custom"
+            icon_size: dp(42)
+            elevation: 12
+            on_press: root.manager.current = 'Main'
+            pos_hint: {'center_y': 0.5}
 
-                    MapMarker:
-                        lat: 15.98838593868359
-                        lon: 120.57362818692708
-
-        MDBottomNavigationItem:
-            name: 'screen 4'
-            text: "Profile"
-            icon: 'account-circle-outline'
-
-            MDLabel:
-                text: "    Profile"
-                pos_hint: {'center_y': 0.9}
-                bold:True
-                font_size: 30
-                font_name: "HelveticaWorld-Bold.ttf"
+        MDLabel:
+            text: "Add Contact"
+            bold: True
+            font_size: 30
+            font_name: "HelveticaWorld-Bold.ttf"
