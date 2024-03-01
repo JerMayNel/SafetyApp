@@ -1,14 +1,15 @@
 # SafetyApp
 
-[![forthebadge](data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNzIuNjc1MDAzMDUxNzU3OCIgaGVpZ2h0PSIzNSIgdmlld0JveD0iMCAwIDE3Mi42NzUwMDMwNTE3NTc4IDM1Ij48cmVjdCB3aWR0aD0iODQuMDEyNTA0NTc3NjM2NzIiIGhlaWdodD0iMzUiIGZpbGw9IiM0YTkwZTIiLz48cmVjdCB4PSI4NC4wMTI1MDQ1Nzc2MzY3MiIgd2lkdGg9Ijg4LjY2MjQ5ODQ3NDEyMTEiIGhlaWdodD0iMzUiIGZpbGw9IiNmOGU3MWMiLz48dGV4dCB4PSI0Mi4wMDYyNTIyODg4MTgzNiIgeT0iMTcuNSIgZm9udC1zaXplPSIxMiIgZm9udC1mYW1pbHk9IidSb2JvdG8nLCBzYW5zLXNlcmlmIiBmaWxsPSIjMDAwMDAwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBhbGlnbm1lbnQtYmFzZWxpbmU9Im1pZGRsZSIgbGV0dGVyLXNwYWNpbmc9IjIiPk1BREUgSU48L3RleHQ+PHRleHQgeD0iMTI4LjM0Mzc1MzgxNDY5NzI3IiB5PSIxNy41IiBmb250LXNpemU9IjEyIiBmb250LWZhbWlseT0iJ01vbnRzZXJyYXQnLCBzYW5zLXNlcmlmIiBmaWxsPSIjMDAwMDAwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXdlaWdodD0iOTAwIiBhbGlnbm1lbnQtYmFzZWxpbmU9Im1pZGRsZSIgbGV0dGVyLXNwYWNpbmc9IjIiPlBZVEhPTjwvdGV4dD48L3N2Zz4=)](https://forthebadge.com)
+[![forthebadge](https://forthebadge.com/images/badges/made-with-python.svg)](https://forthebadge.com)
 
-Software Design Project
+**Software Design Project**
 
+---
+**Setting up the workspace as a contributor**
 
-Setting up the workspace as a contributor
-For PyCharm Users
+_For PyCharm Users_
 
-Create a new project from version control.
-Go to GitHub, click on the < > Code button and copy the HTTPS url.
-Paste it on the URL field in PyCharm and specify a project directory.
-Then clone the project.
+- Create a new project from version control.
+- Go to GitHub, click on the < > Code button and copy the HTTPS url.
+- Paste it on the URL field in PyCharm and specify a project directory.
+- Then clone the project.
