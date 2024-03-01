@@ -94,25 +94,28 @@ ScreenManager:
                     font_size: 30
                     font_name: "HelveticaWorld-Bold.ttf"
 
-                MDCard:
-                    style: "outlined"
+                BoxLayout:
                     orientation: 'vertical'
-                    padding: "8dp"
-                    spacing: "8dp"
-                    elevation: 10
-                    size_hint_y: None
-                    size: "400dp", "400dp"
-                    pos_hint: {"center_x": .5, 'center_y': .4}
 
-                    MapView:
-                        id: map_view
-                        lat: 15.98838593868359  # Latitude for your initial map position
-                        lon: 120.57362818692708  # Longitude for your initial map position
-                        zoom: 18  # Initial zoom level
+                    MDCard:
+                        style: "outlined"
+                        orientation: 'vertical'
+                        padding: "8dp"
+                        spacing: "8dp"
+                        elevation: 10
+                        size_hint_y: None
+                        size: "400dp", "400dp"
+                        pos_hint: {"center_x": .5, 'center_y': .4}
 
-                        MapMarker:
-                            lat: 15.98838593868359
-                            lon: 120.57362818692708
+                        MapView:
+                            id: map_view
+                            lat: 15.98838593868359  # Latitude for your initial map position
+                            lon: 120.57362818692708  # Longitude for your initial map position
+                            zoom: 18  # Initial zoom level
+
+                            MapMarker:
+                                lat: 15.98838593868359
+                                lon: 120.57362818692708
 
             MDBottomNavigationItem:
                 name: 'screen 4'
@@ -139,60 +142,60 @@ ScreenManager:
             font_name: "HelveticaWorld-Bold.ttf"
             type_height: "small"
             left_action_items: [["arrow-left", lambda x: setattr(root.manager, 'current', 'Main')]]
-            right_action_items: [["check", lambda x: setattr(root.manager, 'current', 'Main')]]
+            right_action_items: [["check", lambda x: app.root.get_screen('AddContacts').get_data()]] # Button to add contacts
             md_bg_color: (18 / 255, 18 / 255, 18 / 255, 1)
             elevation: 0
 
-        ScrollView:
+        MDScrollView:  # Changed to MDScrollView
 
-    MDBoxLayout:
-        orientation: 'vertical'
+            MDBoxLayout:
+                orientation: 'vertical'
 
-        MDIcon:
-            icon: "account-circle-outline"
-            pos_hint: {"center_x": .5}
-            font_size: dp(50)
-            size_hint_x: None
-            width: 200
+                MDIcon:
+                    icon: "account-circle-outline"
+                    pos_hint: {"center_x": .5}
+                    font_size: dp(50)
+                    size_hint_x: None
+                    width: 200
 
-        MDLabel:
-            text: "Emergency Contact 1"
-            halign: 'center'
-            bold:True
-            font_size: 17
-            font_name: "HelveticaWorld-Bold.ttf"
-            size_hint_y: None
-            height: self.texture_size[1]
-            padding_y: 15
+                MDLabel:
+                    text: "Emergency Contact 1"
+                    halign: 'center'
+                    bold: True
+                    font_size: 17
+                    font_name: "HelveticaWorld-Bold.ttf"
+                    size_hint_y: None
+                    height: self.texture_size[1]
+                    padding_y: 15
 
-        MDTextField:
-            id: phone_number
-            hint_text: "Phone Number"
-            icon_left: 'phone'
-            size_hint_x: None
-            width: 250
-            font_size: 20
-            pos_hint: {"center_x": .5}
-            input_filter: "int"
+                MDTextField:
+                    id: phone_number
+                    hint_text: "Phone Number"
+                    icon_left: 'phone'
+                    size_hint_x: None
+                    width: 250
+                    font_size: 20
+                    pos_hint: {"center_x": .5}
+                    input_filter: "int"
 
-        MDTextField:
-            id: name
-            hint_text: "Name (Optional)"
-            icon_left: 'account-circle-outline'
-            size_hint_x: None
-            width: 250
-            font_size: 20
-            pos_hint: {"center_x": .5}
+                MDTextField:
+                    id: name
+                    hint_text: "Name (Optional)"
+                    icon_left: 'account-circle-outline'
+                    size_hint_x: None
+                    width: 250
+                    font_size: 20
+                    pos_hint: {"center_x": .5}
 
-        MDTextField:
-            id: email
-            hint_text: "Email (Optional)"
-            icon_left: 'email-outline'
-            size_hint_x: None
-            width: 250
-            font_size: 20
-            pos_hint: {"center_x": .5}
+                MDTextField:
+                    id: email
+                    hint_text: "Email (Optional)"
+                    icon_left: 'email-outline'
+                    size_hint_x: None
+                    width: 250
+                    font_size: 20
+                    pos_hint: {"center_x": .5}
 
-        Widget:
-            size_hint_y: None
-            height: 250
+                Widget:
+                    size_hint_y: None
+                    height: 250
