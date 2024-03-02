@@ -1,6 +1,8 @@
 ScreenManager:
     MainScreen:
     AddContactsScreen:
+    EditProfileScreen:
+    AboutUsScreen:
 
 <MainScreen>:
     name: 'Main'
@@ -20,11 +22,11 @@ ScreenManager:
                 icon: 'shield'
 
                 RelativeLayout:
-                    MDIconButton:
+                    MDIconButton: # TODO: For backend, implement a working button
                         icon: 'shield-outline'
                         pos_hint: {'center_x': 0.5, 'center_y': 0.4}
                         size_hint: None, None
-                        size: '600dp', '600dp'  # Adjust the size
+                        size: '600dp', '600dp'
                         theme_text_color: "Custom"
                         text_color: (31 / 255, 31 / 255, 31 / 255, 1)
                         # Adjust the size of the icon
@@ -88,7 +90,7 @@ ScreenManager:
                 icon: 'map-marker'
 
                 MDLabel:
-                    text: "    Location"
+                    text: "    Location" # TODO: Implement a working gps system
                     pos_hint: {'center_y': 0.9}
                     bold:True
                     font_size: 30
@@ -120,7 +122,7 @@ ScreenManager:
                             height: self.texture_size[1]
                             padding_y: 30
 
-                        MDIconButton:
+                        MDIconButton: # TODO: Implement a working switch button to ask to turn on the location services
                             icon: "toggle-switch"
                             style: "outlined"
                             pos_hint: {'right': 0.985}
@@ -169,7 +171,7 @@ ScreenManager:
                         padding_y: 15
 
                     MDLabel:
-                        text: "Cid Kagenou" # Implement a backend here to take the name of the user
+                        text: "Cid Kagenou" # TODO: Implement a backend here to take the name of the user BASED ON THEIR OWN LOGGED ACCOUNTS
                         halign: 'center'
                         bold: True
                         font_size: 25
@@ -178,7 +180,7 @@ ScreenManager:
                         height: self.texture_size[1]
 
                     MDLabel:
-                        text: "09123456789" # Implement a backend here to take the number of the user
+                        text: "09123456789" # TODO: Implement a backend here to take the number of the user BASED ON THEIR OWN LOGGED ACCOUNTS
                         halign: 'center'
                         bold: True
                         font_size: 15
@@ -199,6 +201,7 @@ ScreenManager:
                         md_bg_color: 31 / 255, 31 / 255, 31 / 255, 1
                         text_color: 1, 1, 1, 1  # White text color (RGBA)
                         icon_color: 1, 1, 1, 1  # White icon color (RGBA)
+                        on_press: root.manager.current = 'EditProfile'
 
                     Widget:
                         size_hint_y: None
@@ -213,7 +216,7 @@ ScreenManager:
                         md_bg_color: 31 / 255, 31 / 255, 31 / 255, 1
                         text_color: 1, 1, 1, 1  # White text color (RGBA)
                         icon_color: 1, 1, 1, 1  # White icon color (RGBA)
-
+                        on_press: root.manager.current = 'AboutUs'
                     Widget:
                         size_hint_y: None
                         height: 15
@@ -227,6 +230,7 @@ ScreenManager:
                         md_bg_color: 31 / 255, 31 / 255, 31 / 255, 1
                         text_color: 1, 1, 1, 1  # White text color (RGBA)
                         icon_color: 1, 1, 1, 1  # White icon color (RGBA)
+                        on_release: app.logout_alert()
 
                     Widget:
                         size_hint_y: None
@@ -245,7 +249,7 @@ ScreenManager:
             font_name: "HelveticaWorld-Bold.ttf"
             type_height: "small"
             left_action_items: [["arrow-left", lambda x: setattr(root.manager, 'current', 'Main')]]
-            right_action_items: [["check", lambda x: app.root.get_screen('AddContacts').get_data()]] # Button to add contacts
+            right_action_items: [["check", lambda x: app.root.get_screen('AddContacts').get_data()]] # TODO: Button to add contacts
             md_bg_color: (18 / 255, 18 / 255, 18 / 255, 1)
             elevation: 0
 
@@ -302,3 +306,177 @@ ScreenManager:
                 Widget:
                     size_hint_y: None
                     height: 250
+
+<EditProfileScreen>
+    name: 'EditProfile'
+
+    MDBoxLayout:
+        orientation: 'vertical'
+
+        MDTopAppBar:
+            specific_text_color: 1, 1, 1, 1
+            title: "[font=HelveticaWorld-Bold.ttf]Edit Profile[/font]"
+            anchor_title: "left"
+            font_name: "HelveticaWorld-Bold.ttf"
+            type_height: "small"
+            left_action_items: [["arrow-left", lambda x: setattr(root.manager, 'current', 'Main')]]
+            right_action_items: [["check", lambda x: setattr(root.manager, 'current', 'Main')]] # TODO: Button to EDIT contacts
+            md_bg_color: (18 / 255, 18 / 255, 18 / 255, 1)
+            elevation: 0
+
+        MDScrollView:  # Changed to MDScrollView
+
+            MDBoxLayout:
+                orientation: 'vertical'
+
+                MDIcon:
+                    icon: "account-circle-outline"
+                    pos_hint: {"center_x": .5}
+                    font_size: dp(50)
+                    size_hint_x: None
+                    width: 200
+
+                MDTextField:
+                    id: name
+                    hint_text: "Your Name"
+                    icon_left: 'rename'
+                    size_hint_x: None
+                    width: 250
+                    font_size: 20
+                    pos_hint: {"center_x": .5}
+                    text: "Cid Kagenou" # TODO: Implement a code to change the displayed text on Profile Screen AND DATABASE based on this
+
+                MDTextField:
+                    id: phone_number
+                    hint_text: "Phone Number"
+                    icon_left: 'account-circle-outline'
+                    size_hint_x: None
+                    width: 250
+                    font_size: 20
+                    pos_hint: {"center_x": .5}
+                    text: "09123456789" # TODO: Implement a code to change the displayed text on Profile Screen AND DATABASE based on this
+
+                MDTextField:
+                    id: email
+                    hint_text: "Email (Optional)"
+                    icon_left: 'email-outline'
+                    size_hint_x: None
+                    width: 250
+                    font_size: 20
+                    pos_hint: {"center_x": .5}
+
+                Widget:
+                    size_hint_y: None
+                    height: 250
+
+<AboutUsScreen>
+    name: 'AboutUs'
+
+    MDBoxLayout:
+        orientation: 'vertical'
+
+        MDTopAppBar:
+            specific_text_color: 1, 1, 1, 1
+            title: "[font=HelveticaWorld-Bold.ttf]About Us[/font]"
+            anchor_title: "left"
+            font_name: "HelveticaWorld-Bold.ttf"
+            type_height: "small"
+            left_action_items: [["arrow-left", lambda x: setattr(root.manager, 'current', 'Main')]]
+            md_bg_color: (18 / 255, 18 / 255, 18 / 255, 1)
+            elevation: 0
+
+        MDScrollView:  # Changed to MDScrollView
+
+            MDBoxLayout:
+                orientation: 'vertical'
+
+                MDIcon:
+                    icon: "shield-account-outline" # Logo here
+                    pos_hint: {"center_x": .5}
+                    font_size: dp(70)
+                    size_hint_x: None
+                    width: 200
+
+                MDLabel:
+                    text: "Safety App"
+                    halign: 'center'
+                    bold: True
+                    font_size: 45
+                    font_name: "HelveticaWorld-Bold.ttf"
+                    size_hint_y: None
+                    height: self.texture_size[1]
+                    padding_y: 10
+
+                Widget:
+                    size_hint_y: None
+                    height: 50
+
+                MDLabel:
+                    text: "Our Team:"
+                    halign: 'center'
+                    bold: True
+                    font_size: 30
+                    font_name: "HelveticaWorld-Bold.ttf"
+                    size_hint_y: None
+                    height: self.texture_size[1]
+                    padding_y: 10
+
+                MDLabel:
+                    text: "Antolin, Janel"
+                    halign: 'center'
+                    bold: True
+                    font_size: 20
+                    font_name: "HelveticaWorld-Regular.ttf"
+                    size_hint_y: None
+                    height: self.texture_size[1]
+                    padding_y: 5
+
+                MDLabel:
+                    text: "Dela Cruz, Jeramelle"
+                    halign: 'center'
+                    font_size: 20
+                    font_name: "HelveticaWorld-Regular.ttf"
+                    size_hint_y: None
+                    height: self.texture_size[1]
+                    padding_y: 5
+
+                MDLabel:
+                    text: "Dela Cruz, Mi-ro"
+                    halign: 'center'
+                    font_size: 20
+                    font_name: "HelveticaWorld-Regular.ttf"
+                    size_hint_y: None
+                    height: self.texture_size[1]
+                    padding_y: 5
+
+                MDLabel:
+                    text: "Delgado, Revin Jay"
+                    halign: 'center'
+                    font_size: 20
+                    font_name: "HelveticaWorld-Regular.ttf"
+                    size_hint_y: None
+                    height: self.texture_size[1]
+                    padding_y: 5
+
+                MDLabel:
+                    text: "Olaera, Angela"
+                    halign: 'center'
+                    font_size: 20
+                    font_name: "HelveticaWorld-Regular.ttf"
+                    size_hint_y: None
+                    height: self.texture_size[1]
+                    padding_y: 5
+
+                MDLabel:
+                    text: "Sedanto, Jomari"
+                    halign: 'center'
+                    font_size: 20
+                    font_name: "HelveticaWorld-Regular.ttf"
+                    size_hint_y: None
+                    height: self.texture_size[1]
+                    padding_y: 5
+
+                Widget:
+                    size_hint_y: None
+                    height: 100
+
