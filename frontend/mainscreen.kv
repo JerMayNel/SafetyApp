@@ -96,15 +96,43 @@ ScreenManager:
 
                 BoxLayout:
                     orientation: 'vertical'
+                    padding: "8dp"
+                    spacing: "8dp"
+
+                    BoxLayout:
+                        orientation: 'horizontal'
+                        pos_hint: {'top': 1}
+
+                        MDIcon:
+                            icon: "map-marker"
+                            pos_hint: {'left': 0.8}
+                            font_size: dp(35)
+                            size_hint_x: None
+                            width: 150
+                            padding_y: 20
+                            padding_x: 15
+
+                        MDLabel:
+                            text: "Location"
+                            font_size: 20
+                            font_name: "HelveticaWorld-Bold.ttf"
+                            size_hint_y: None
+                            height: self.texture_size[1]
+                            padding_y: 30
+
+                        MDIconButton:
+                            icon: "toggle-switch"
+                            style: "outlined"
+                            pos_hint: {'right': 0.985}
+                            icon_size: dp(50)
+                            elevation: 12
 
                     MDCard:
                         style: "outlined"
                         orientation: 'vertical'
-                        padding: "8dp"
-                        spacing: "8dp"
                         elevation: 10
                         size_hint_y: None
-                        size: "400dp", "400dp"
+                        size: "400dp", "350dp"
                         pos_hint: {"center_x": .5, 'center_y': .4}
 
                         MapView:
@@ -123,11 +151,86 @@ ScreenManager:
                 icon: 'account-circle-outline'
 
                 MDLabel:
-                    text: "    Profile"
+                    text: "    Your Profile"
                     pos_hint: {'center_y': 0.9}
                     bold:True
                     font_size: 30
                     font_name: "HelveticaWorld-Bold.ttf"
+
+                MDBoxLayout:
+                    orientation: 'vertical'
+
+                    MDIcon:
+                        icon: "account-circle-outline"
+                        pos_hint: {"center_x": .5}
+                        font_size: dp(50)
+                        size_hint_x: None
+                        width: 200
+                        padding_y: 15
+
+                    MDLabel:
+                        text: "Cid Kagenou" # Implement a backend here to take the name of the user
+                        halign: 'center'
+                        bold: True
+                        font_size: 25
+                        font_name: "HelveticaWorld-Bold.ttf"
+                        size_hint_y: None
+                        height: self.texture_size[1]
+
+                    MDLabel:
+                        text: "09123456789" # Implement a backend here to take the number of the user
+                        halign: 'center'
+                        bold: True
+                        font_size: 15
+                        font_name: "HelveticaWorld-Bold.ttf"
+                        size_hint_y: None
+                        height: self.texture_size[1]
+
+                    Widget:
+                        size_hint_y: None
+                        height: 100
+
+                    MDFillRoundFlatIconButton
+                        text: '   Edit Profile             '
+                        font_name: "HelveticaWorld-Bold.ttf"
+                        icon: "pencil"
+                        font_size: 30
+                        pos_hint: {'center_x': 0.5}
+                        md_bg_color: 31 / 255, 31 / 255, 31 / 255, 1
+                        text_color: 1, 1, 1, 1  # White text color (RGBA)
+                        icon_color: 1, 1, 1, 1  # White icon color (RGBA)
+
+                    Widget:
+                        size_hint_y: None
+                        height: 15
+
+                    MDFillRoundFlatIconButton
+                        text: '    About Us                '
+                        font_name: "HelveticaWorld-Bold.ttf"
+                        icon: "information"
+                        font_size: 30
+                        pos_hint: {'center_x': 0.5}
+                        md_bg_color: 31 / 255, 31 / 255, 31 / 255, 1
+                        text_color: 1, 1, 1, 1  # White text color (RGBA)
+                        icon_color: 1, 1, 1, 1  # White icon color (RGBA)
+
+                    Widget:
+                        size_hint_y: None
+                        height: 15
+
+                    MDFillRoundFlatIconButton
+                        text: '   Log Out                  '
+                        font_name: "HelveticaWorld-Bold.ttf"
+                        icon: "logout"
+                        font_size: 30
+                        pos_hint: {'center_x': 0.5}
+                        md_bg_color: 31 / 255, 31 / 255, 31 / 255, 1
+                        text_color: 1, 1, 1, 1  # White text color (RGBA)
+                        icon_color: 1, 1, 1, 1  # White icon color (RGBA)
+
+                    Widget:
+                        size_hint_y: None
+                        height: 70
 
 <AddContactsScreen>
     name: 'AddContacts'
