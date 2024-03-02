@@ -1,0 +1,14 @@
+BoxLayout:
+    MDFloatLayout:
+        orientation: 'vertical'
+        md_bg_color: "#121212"
+        padding: 5
+        Image
+            source: 'assets/LOGO.png'
+            size_hint: dp(0.3), dp(0.3)
+            pos_hint: {'center_x': 0.5, 'center_y': 0.7}
+        MDProgressBar:
+            id: progress_bar
+            value: 0
+            size_hint: 0.5, None
+            pos_hint: {'center_x': 0.5, 'center_y': 0.5}
