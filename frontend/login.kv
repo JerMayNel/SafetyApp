@@ -1,0 +1,85 @@
+MDBoxLayout:
+    orientation: 'vertical'
+    padding: "20dp"
+    md_bg_color: '#121212'
+    MDFloatLayout
+        md_bg_color: '#121212'
+        MDLabel:
+            text: "Be Secured, Be Safe"
+            pos_hint: {"center_x": .5, "center_y": .9}
+            font_size: "26sp"
+            theme_text_color: "Custom"
+            text_color: "#FFFFFF"
+            font_name: "assets/HelveticaWorld.ttf"
+        MDLabel:
+            text: "Login"
+            pos_hint: {"center_x": .5, "center_y": .75}
+            font_size: "26sp"
+            theme_text_color: "Custom"
+            text_color: "#FFFFFF"
+            font_name: "assets/HelveticaWorld.ttf"
+        MDLabel:
+            text: "Hi Welcome!"
+            pos_hint: {"center_x": .5, "center_y": .70}
+            font_size: "13sp"
+            theme_text_color: "Custom"
+            text_color: "#FFFFFF"
+            font_name: "assets/HelveticaWorld.ttf"
+        MDTextField:
+            id: username
+            hint_text: "Enter Email or Number"
+            hint_text_color_normal: "#817E89"
+            line_color_normal: "#817E89"
+            mode: "rectangle"
+            icon_left: "email"
+            icon_left_color_normal: "#817E89"
+            pos_hint: {"center_x": .5, "center_y": .60}
+            size_hint_x: None
+            width: dp(250)
+
+        MDTextField:
+            id: username
+            hint_text: "Password"
+            hint_text_color_normal: "#817E89"
+            line_color_normal: "#817E89"
+            mode: "rectangle"
+            icon_left: "lock"
+            icon_left_color_normal: "#817E89"
+            pos_hint: {"center_x": .5, "center_y": .48}
+            size_hint_x: None
+            width: dp(250)
+
+        MDFillRoundFlatButton:
+            text: "        Log in        "
+            pos_hint: {"center_x": .5, "center_y": .35}
+            size_hint_x: None
+            size: dp(200), dp(50)
+            on_press: app.root.current = "home"
+            md_bg_color: "#0DF5E3"
+            text_color: "#000000"
+            font_name: "assets/HelveticaWorld.ttf"
+        MDLabel:
+            text: "Forgot Password?"
+            halign: "center"
+            pos_hint: {"center_x": .5, "center_y": .30}
+            font_size: "13sp"
+            theme_text_color: "Custom"
+            text_color: "#0DF5E3"
+            font_name: "assets/HelveticaWorld.ttf"
+        MDFillRoundFlatButton:
+            text: "        Sign Up        "
+            pos_hint: {"center_x": .5, "center_y": .15}
+            size_hint_x: None
+            size: dp(200), dp(50)
+            on_press: app.root.current = "home"
+            md_bg_color: "#0DF5E3"
+            text_color: "#000000"
+            font_name: "assets/HelveticaWorld.ttf"
+        MDLabel:
+            text: "Don't have an account?"
+            halign: "center"
+            pos_hint: {"center_x": .5, "center_y": .10}
+            font_size: "13sp"
+            theme_text_color: "Custom"
+            text_color: "#0DF5E3"
+            font_name: "assets/HelveticaWorld.ttf"
