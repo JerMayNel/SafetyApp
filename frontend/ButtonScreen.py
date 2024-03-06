@@ -50,7 +50,7 @@ class MainScreen(Screen):
 class AddContactsScreen(Screen):
     """ TODO: Sample getting data for now, printing datas on the screen.
      TODO: IMPORTANT: for backend soon!
-     TODO: Create a backend code to create a card / gui for new contacts, based on the database inputted by
+     TODO: Create a backend code to create a card / list / gui for new contacts, based on the database inputted by
      TODO: -text fields, ensure that the cards has a delete option to delete cards.
     """
 
