@@ -78,6 +78,20 @@ ScreenManager:
                     elevation: 12
                     on_press: root.manager.current = 'AddContacts'
 
+                ScrollView:
+                    pos_hint: {'top' : 0.85}
+
+                    MDList:
+                        TwoLineListItem:
+                            id: contact1
+                            text: "Emergency Contact 1"
+                            secondary_text: "09987654321"
+
+                        TwoLineListItem:
+                            id: contact2
+                            text: "Emergency Contact 2"
+                            secondary_text: "09987654321"
+
             MDBottomNavigationItem:
                 name: 'screen 3'
                 text: "Map"
