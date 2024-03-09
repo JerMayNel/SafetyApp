@@ -1,0 +1,84 @@
+MDScreen:
+    name: "account"
+    MDBoxLayout:
+        orientation: 'vertical'
+        padding: "20dp"
+        md_bg_color: '#121212'
+        MDFloatLayout:
+            md_bg_color: '#121212'
+            MDIconButton:
+                icon: "arrow-left"
+                pos_hint: {"center_x": .01, "center_y": .9}
+                user_font_size: "30sp"
+                theme_text_color: "Custom"
+                text_color: "#FFFFFF"
+                on_press: app.root.current = "login"
+            MDLabel:
+                text: "Create Account"
+                pos_hint: {"center_x": .5, "center_y": .8}
+                font_size: "26sp"
+                theme_text_color: "Custom"
+                text_color: "#FFFFFF"
+                font_name: "assets/HelveticaWorld.ttf"
+            MDLabel:
+                text: "Hi there! Please fill the input below"
+                pos_hint: {"center_x": .5, "center_y": .75}
+                font_size: "13sp"
+                theme_text_color: "Custom"
+                text_color: "#FFFFFF"
+                font_name: "assets/HelveticaWorld.ttf"
+            MDTextField:
+                id: name
+                hint_text: "Full name"
+                hint_text_color_normal: "#817E89"
+                line_color_normal: "#817E89"
+                mode: "rectangle"
+                icon_left: "account"
+                icon_left_color_normal: "#817E89"
+                pos_hint: {"center_x": .5, "center_y": .65}
+                size_hint_x: None
+                width: dp(250)
+            MDTextField:
+                id: email
+                hint_text: "Email"
+                hint_text_color_normal: "#817E89"
+                line_color_normal: "#817E89"
+                mode: "rectangle"
+                icon_left: "email"
+                icon_left_color_normal: "#817E89"
+                pos_hint: {"center_x": .5, "center_y": .53}
+                size_hint_x: None
+                width: dp(250)
+            MDTextField:
+                id: PhoneNum
+                hint_text: "Phone Number"
+                hint_text_color_normal: "#817E89"
+                line_color_normal: "#817E89"
+                mode: "rectangle"
+                icon_left: "phone"
+                icon_left_color_normal: "#817E89"
+                pos_hint: {"center_x": .5, "center_y": .41}
+                size_hint_x: None
+                width: dp(250)
+            MDTextField:
+                id: password
+                hint_text: "Password"
+                hint_text_color_normal: "#817E89"
+                line_color_normal: "#817E89"
+                mode: "rectangle"
+                icon_left: "lock"
+                icon_left_color_normal: "#817E89"
+                pos_hint: {"center_x": .5, "center_y": .29}
+                size_hint_x: None
+                width: dp(250)
+            MDFillRoundFlatButton:
+                text: "Create Account"
+                pos_hint: {"center_x": .5, "center_y": .15}
+                size_hint_x: None
+                width: dp(250)
+                on_press: app.create_account(email.text, password.text)
+                theme_text_color: "Custom"
+                text_color: "#FFFFFF"
+                md_bg_color: "#FF6F61"
+                font_name: "assets/HelveticaWorld.ttf"
+
