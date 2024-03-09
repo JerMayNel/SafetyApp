@@ -6,7 +6,7 @@ from kivy.core.window import Window
 from kivymd.uix.button import MDFlatButton
 from kivymd.uix.dialog import MDDialog
 
-Window.size = (400, 600)  # For phone size development only
+Window.size = (350, 600)  # For phone size development only
 
 
 class SafetyApp(MDApp):

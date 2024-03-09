@@ -13,17 +13,18 @@ ScreenManager:
             #color stuff
             panel_color: 31 / 255, 31 / 255, 31 / 255, 1
             elevation: 12
-            font_name: "HelveticaWorld-Bold.ttf"
+            font_name: "fonts/HelveticaWorld-Bold.ttf"
             selected_color_background: 0, 0, 1, 0
 
             MDBottomNavigationItem:
+                md_bg_color: '#222430'
                 name: 'screen 1'
                 text: "Button"
                 icon: 'shield'
 
                 RelativeLayout:
                     MDIconButton: # TODO: For backend, implement a working button
-                        icon: 'button.png'
+                        icon: 'images/button.png'
                         pos_hint: {'center_x': 0.5, 'center_y': 0.4}
                         icon_size: dp(230)
                         elevation: 12
@@ -34,26 +35,26 @@ ScreenManager:
                         pos_hint: {'center_x': 0.5, 'top': 0.65}
                         bold:True
                         font_size: 20
-                        font_name: "HelveticaWorld-Bold.ttf"
+                        font_name: "fonts/HelveticaWorld-Bold.ttf"
 
                     MDLabel:
                         text: "    Safety App"
                         pos_hint: {'center_y': 0.9}
                         bold:True
                         font_size: 30
-                        font_name: "HelveticaWorld-Bold.ttf"
+                        font_name: "fonts/HelveticaWorld-Bold.ttf"
 
                     MDLabel:
                         text: "       Note the location service MUST BE ON"
                         pos_hint: {'center_y': 0.83}
                         font_size: 17
-                        font_name: "HelveticaWorld-Regular.ttf"
+                        font_name: "fonts/HelveticaWorld-Regular.ttf"
 
                     MDLabel:
                         text: "       MAKE SURE YOU HAVE INTERNET ACCESS"
                         pos_hint: {'center_y': 0.795}
                         font_size: 17
-                        font_name: "HelveticaWorld-Regular.ttf"
+                        font_name: "fonts/HelveticaWorld-Regular.ttf"
 
             MDBottomNavigationItem:
                 name: 'screen 2'
@@ -65,7 +66,7 @@ ScreenManager:
                     pos_hint: {'center_y': 0.9}
                     bold:True
                     font_size: 30
-                    font_name: "HelveticaWorld-Bold.ttf"
+                    font_name: "fonts/HelveticaWorld-Bold.ttf"
 
                 MDIconButton:
                     icon: "plus-circle-outline"
@@ -102,7 +103,7 @@ ScreenManager:
                     pos_hint: {'center_y': 0.9}
                     bold:True
                     font_size: 30
-                    font_name: "HelveticaWorld-Bold.ttf"
+                    font_name: "fonts/HelveticaWorld-Bold.ttf"
 
                 BoxLayout:
                     orientation: 'vertical'
@@ -125,7 +126,7 @@ ScreenManager:
                         MDLabel:
                             text: "Location"
                             font_size: 20
-                            font_name: "HelveticaWorld-Bold.ttf"
+                            font_name: "fonts/HelveticaWorld-Bold.ttf"
                             size_hint_y: None
                             height: self.texture_size[1]
                             padding_y: 30
@@ -155,6 +156,12 @@ ScreenManager:
                                 lat: 15.98838593868359
                                 lon: 120.57362818692708
 
+                            MapMarkerPopup:
+                                lat: 15.98838593868359
+                                lon: 120.57362818692708
+                                source: "images/map_marker.png"
+                                size: (60, 60)
+
             MDBottomNavigationItem:
                 name: 'screen 4'
                 text: "Profile"
@@ -165,7 +172,7 @@ ScreenManager:
                     pos_hint: {'center_y': 0.9}
                     bold:True
                     font_size: 30
-                    font_name: "HelveticaWorld-Bold.ttf"
+                    font_name: "fonts/HelveticaWorld-Bold.ttf"
 
                 MDBoxLayout:
                     orientation: 'vertical'
@@ -183,7 +190,7 @@ ScreenManager:
                         halign: 'center'
                         bold: True
                         font_size: 25
-                        font_name: "HelveticaWorld-Bold.ttf"
+                        font_name: "fonts/HelveticaWorld-Bold.ttf"
                         size_hint_y: None
                         height: self.texture_size[1]
 
@@ -192,7 +199,7 @@ ScreenManager:
                         halign: 'center'
                         bold: True
                         font_size: 15
-                        font_name: "HelveticaWorld-Bold.ttf"
+                        font_name: "fonts/HelveticaWorld-Bold.ttf"
                         size_hint_y: None
                         height: self.texture_size[1]
 
@@ -202,7 +209,7 @@ ScreenManager:
 
                     MDFillRoundFlatIconButton
                         text: '   Edit Profile             '
-                        font_name: "HelveticaWorld-Bold.ttf"
+                        font_name: "fonts/HelveticaWorld-Bold.ttf"
                         icon: "pencil"
                         font_size: 30
                         pos_hint: {'center_x': 0.5}
@@ -217,7 +224,7 @@ ScreenManager:
 
                     MDFillRoundFlatIconButton
                         text: '    About Us                '
-                        font_name: "HelveticaWorld-Bold.ttf"
+                        font_name: "fonts/HelveticaWorld-Bold.ttf"
                         icon: "information"
                         font_size: 30
                         pos_hint: {'center_x': 0.5}
@@ -231,7 +238,7 @@ ScreenManager:
 
                     MDFillRoundFlatIconButton
                         text: '   Log Out                  '
-                        font_name: "HelveticaWorld-Bold.ttf"
+                        font_name: "fonts/HelveticaWorld-Bold.ttf"
                         icon: "logout"
                         font_size: 30
                         pos_hint: {'center_x': 0.5}
@@ -252,9 +259,9 @@ ScreenManager:
 
         MDTopAppBar:
             specific_text_color: 1, 1, 1, 1
-            title: "[font=HelveticaWorld-Bold.ttf]Add Contact[/font]"
+            title: "[font=fonts/HelveticaWorld-Bold.ttf]Add Contact[/font]"
             anchor_title: "left"
-            font_name: "HelveticaWorld-Bold.ttf"
+            font_name: "fonts/HelveticaWorld-Bold.ttf"
             type_height: "small"
             left_action_items: [["arrow-left", lambda x: setattr(root.manager, 'current', 'Main')]]
             right_action_items: [["check", lambda x: app.root.get_screen('AddContacts').get_data()]] # TODO: Button to add contacts
@@ -278,7 +285,7 @@ ScreenManager:
                     halign: 'center'
                     bold: True
                     font_size: 17
-                    font_name: "HelveticaWorld-Bold.ttf"
+                    font_name: "fonts/HelveticaWorld-Bold.ttf"
                     size_hint_y: None
                     height: self.texture_size[1]
                     padding_y: 15
@@ -323,9 +330,9 @@ ScreenManager:
 
         MDTopAppBar:
             specific_text_color: 1, 1, 1, 1
-            title: "[font=HelveticaWorld-Bold.ttf]Edit Profile[/font]"
+            title: "[font=fonts/HelveticaWorld-Bold.ttf]Edit Profile[/font]"
             anchor_title: "left"
-            font_name: "HelveticaWorld-Bold.ttf"
+            font_name: "fonts/HelveticaWorld-Bold.ttf"
             type_height: "small"
             left_action_items: [["arrow-left", lambda x: setattr(root.manager, 'current', 'Main')]]
             right_action_items: [["check", lambda x: setattr(root.manager, 'current', 'Main')]] # TODO: Button to EDIT contacts
@@ -385,9 +392,9 @@ ScreenManager:
 
         MDTopAppBar:
             specific_text_color: 1, 1, 1, 1
-            title: "[font=HelveticaWorld-Bold.ttf]About Us[/font]"
+            title: "[font=fonts/HelveticaWorld-Bold.ttf]About Us[/font]"
             anchor_title: "left"
-            font_name: "HelveticaWorld-Bold.ttf"
+            font_name: "fonts/HelveticaWorld-Bold.ttf"
             type_height: "small"
             left_action_items: [["arrow-left", lambda x: setattr(root.manager, 'current', 'Main')]]
             md_bg_color: (18 / 255, 18 / 255, 18 / 255, 1)
@@ -410,7 +417,7 @@ ScreenManager:
                     halign: 'center'
                     bold: True
                     font_size: 45
-                    font_name: "HelveticaWorld-Bold.ttf"
+                    font_name: "fonts/HelveticaWorld-Bold.ttf"
                     size_hint_y: None
                     height: self.texture_size[1]
                     padding_y: 10
@@ -424,7 +431,7 @@ ScreenManager:
                     halign: 'center'
                     bold: True
                     font_size: 30
-                    font_name: "HelveticaWorld-Bold.ttf"
+                    font_name: "fonts/HelveticaWorld-Bold.ttf"
                     size_hint_y: None
                     height: self.texture_size[1]
                     padding_y: 10
@@ -434,7 +441,7 @@ ScreenManager:
                     halign: 'center'
                     bold: True
                     font_size: 20
-                    font_name: "HelveticaWorld-Regular.ttf"
+                    font_name: "fonts/HelveticaWorld-Regular.ttf"
                     size_hint_y: None
                     height: self.texture_size[1]
                     padding_y: 5
@@ -443,7 +450,7 @@ ScreenManager:
                     text: "Dela Cruz, Jeramelle"
                     halign: 'center'
                     font_size: 20
-                    font_name: "HelveticaWorld-Regular.ttf"
+                    font_name: "fonts/HelveticaWorld-Regular.ttf"
                     size_hint_y: None
                     height: self.texture_size[1]
                     padding_y: 5
@@ -452,7 +459,7 @@ ScreenManager:
                     text: "Dela Cruz, Mi-ro"
                     halign: 'center'
                     font_size: 20
-                    font_name: "HelveticaWorld-Regular.ttf"
+                    font_name: "fonts/HelveticaWorld-Regular.ttf"
                     size_hint_y: None
                     height: self.texture_size[1]
                     padding_y: 5
@@ -461,7 +468,7 @@ ScreenManager:
                     text: "Delgado, Revin Jay"
                     halign: 'center'
                     font_size: 20
-                    font_name: "HelveticaWorld-Regular.ttf"
+                    font_name: "fonts/HelveticaWorld-Regular.ttf"
                     size_hint_y: None
                     height: self.texture_size[1]
                     padding_y: 5
@@ -470,7 +477,7 @@ ScreenManager:
                     text: "Olaera, Angela"
                     halign: 'center'
                     font_size: 20
-                    font_name: "HelveticaWorld-Regular.ttf"
+                    font_name: "fonts/HelveticaWorld-Regular.ttf"
                     size_hint_y: None
                     height: self.texture_size[1]
                     padding_y: 5
@@ -479,7 +486,7 @@ ScreenManager:
                     text: "Sedanto, Jomari"
                     halign: 'center'
                     font_size: 20
-                    font_name: "HelveticaWorld-Regular.ttf"
+                    font_name: "fonts/HelveticaWorld-Regular.ttf"
                     size_hint_y: None
                     height: self.texture_size[1]
                     padding_y: 5
