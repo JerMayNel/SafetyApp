@@ -1,6 +1,10 @@
 ScreenManager:
     LogInScreen:
     SignUpScreen:
+    AddTrustedContactsScreen:
+    AskLocationScreen:
+    ForgotPasswordScreen:
+    PinScreen:
 
 <LogInScreen>:
     name: 'LogIn'
@@ -54,7 +58,7 @@ ScreenManager:
                 icon_left: "lock"
                 icon_left_color_normal: "#817E89"
                 pos_hint: {"center_x": .5, "center_y": .35}
-                password: True  # Set password attribute to True to hide the text
+                password: True  # TODO: Make an eye icon to switch between show password and not
                 size_hint_x: None
                 width: root.width * 0.83
 
@@ -63,9 +67,9 @@ ScreenManager:
                 pos_hint: {"center_x": .5, "center_y": .22}
                 size_hint_x: None
                 size: dp(250), dp(50)
-                on_press: app.root.current = "home"
+                on_press: app.root.current = "home" # TODO: Log in the user and go to main screen
                 md_bg_color: "#0DF5E3"
-                text_color: "#000000"
+                text_color: "#222430"
                 font_name: "fonts/HelveticaWorld-Bold.ttf"
                 size_hint_x: None
                 width: root.width * 0.5
@@ -79,6 +83,7 @@ ScreenManager:
                 text_color: "#0DF5E3"
                 font_name: "fonts/HelveticaWorld-Regular.ttf"
                 size_hint_x: None
+                on_press: root.manager.current = 'ForgotPassword'
 
             MDBoxLayout:
                 orientation: 'horizontal'
@@ -106,88 +111,385 @@ ScreenManager:
                     font_name: "fonts/HelveticaWorld-Bold.ttf"
                     size_hint_x: None
                     on_press: root.manager.current = 'SignUp'
+
 <SignUpScreen>:
     name: 'SignUp'
-    MDScreen:
-        name: "account"
-        MDBoxLayout:
-            orientation: 'vertical'
-            padding: "20dp"
+    MDBoxLayout:
+        orientation: 'vertical'
+        padding: "20dp"
+        md_bg_color: '#222430'
+        MDFloatLayout:
             md_bg_color: '#222430'
-            MDFloatLayout:
-                md_bg_color: '#222430'
-                MDIconButton:
-                    icon: "arrow-left"
-                    pos_hint: {"center_x": .01, "center_y": .9}
-                    user_font_size: "30sp"
-                    theme_text_color: "Custom"
-                    text_color: "#FFFFFF"
-                    on_press: root.manager.current = 'LogIn'
-                MDLabel:
-                    text: "Create Account"
-                    pos_hint: {"center_x": .5, "center_y": .8}
-                    font_size: "26sp"
-                    theme_text_color: "Custom"
-                    text_color: "#FFFFFF"
-                    font_name: "fonts/HelveticaWorld-Bold.ttf"
-                MDLabel:
-                    text: "Hi there! Please fill the input below"
-                    pos_hint: {"center_x": .5, "center_y": .75}
-                    font_size: "13sp"
-                    theme_text_color: "Custom"
-                    text_color: "#FFFFFF"
-                    font_name: "fonts/HelveticaWorld-Bold.ttf"
-                MDTextField:
-                    id: name
-                    hint_text: "Full name"
-                    hint_text_color_normal: "#817E89"
-                    line_color_normal: "#817E89"
-                    mode: "rectangle"
-                    icon_left: "account"
-                    icon_left_color_normal: "#817E89"
-                    pos_hint: {"center_x": .5, "center_y": .65}
-                    size_hint_x: None
-                    width: dp(250)
-                MDTextField:
-                    id: email
-                    hint_text: "Email"
-                    hint_text_color_normal: "#817E89"
-                    line_color_normal: "#817E89"
-                    mode: "rectangle"
-                    icon_left: "email"
-                    icon_left_color_normal: "#817E89"
-                    pos_hint: {"center_x": .5, "center_y": .53}
-                    size_hint_x: None
-                    width: dp(250)
-                MDTextField:
-                    id: PhoneNum
-                    hint_text: "Phone Number"
-                    hint_text_color_normal: "#817E89"
-                    line_color_normal: "#817E89"
-                    mode: "rectangle"
-                    icon_left: "phone"
-                    icon_left_color_normal: "#817E89"
-                    pos_hint: {"center_x": .5, "center_y": .41}
-                    size_hint_x: None
-                    width: dp(250)
-                MDTextField:
-                    id: password
-                    hint_text: "Password"
-                    hint_text_color_normal: "#817E89"
-                    line_color_normal: "#817E89"
-                    mode: "rectangle"
-                    icon_left: "lock"
-                    icon_left_color_normal: "#817E89"
-                    pos_hint: {"center_x": .5, "center_y": .29}
-                    size_hint_x: None
-                    width: dp(250)
-                MDFillRoundFlatButton:
-                    text: "Create Account"
-                    pos_hint: {"center_x": .5, "center_y": .15}
-                    size_hint_x: None
-                    width: dp(250)
-                    on_press: app.create_account(email.text, password.text)
-                    theme_text_color: "Custom"
-                    text_color: "#FFFFFF"
-                    md_bg_color: "#FF6F61"
-                    font_name: "fonts/HelveticaWorld-Bold.ttf"
+            MDIconButton:
+                icon: "arrow-left"
+                pos_hint: {"center_x": .05, "center_y": 0.95}
+                user_font_size: "30sp"
+                theme_text_color: "Custom"
+                text_color: "#FFFFFF"
+                on_press: root.manager.current = 'LogIn'
+            MDLabel:
+                text: "Create Account"
+                pos_hint: {"center_x": .5, "center_y": .89}
+                font_size: "26sp"
+                theme_text_color: "Custom"
+                text_color: "#FFFFFF"
+                font_name: "fonts/HelveticaWorld-Bold.ttf"
+            MDLabel:
+                text: "Hi there! Please fill the input below"
+                pos_hint: {"center_x": .5, "center_y": .84}
+                font_size: "13sp"
+                theme_text_color: "Custom"
+                text_color: "#817E89"
+                font_name: "fonts/HelveticaWorld-Bold.ttf"
+            MDTextField:
+                id: name
+                hint_text: "Full name"
+                hint_text_color_normal: "#817E89"
+                line_color_normal: "#817E89"
+                mode: "rectangle"
+                icon_left: "account"
+                icon_left_color_normal: "#817E89"
+                pos_hint: {"center_x": .5, "center_y": .73}
+                size_hint_x: None
+                width: root.width * 0.83
+            MDTextField:
+                id: email
+                hint_text: "Email"
+                hint_text_color_normal: "#817E89"
+                line_color_normal: "#817E89"
+                mode: "rectangle"
+                icon_left: "email"
+                icon_left_color_normal: "#817E89"
+                pos_hint: {"center_x": .5, "center_y": .61}
+                size_hint_x: None
+                width: root.width * 0.83
+            MDTextField:
+                id: PhoneNum
+                hint_text: "Phone Number"
+                hint_text_color_normal: "#817E89"
+                line_color_normal: "#817E89"
+                mode: "rectangle"
+                icon_left: "phone"
+                icon_left_color_normal: "#817E89"
+                pos_hint: {"center_x": .5, "center_y": .49}
+                size_hint_x: None
+                width: root.width * 0.83
+            MDTextField:
+                id: password
+                hint_text: "Password"
+                hint_text_color_normal: "#817E89"
+                line_color_normal: "#817E89"
+                mode: "rectangle"
+                icon_left: "lock"
+                icon_left_color_normal: "#817E89"
+                pos_hint: {"center_x": .5, "center_y": .37}
+                size_hint_x: None
+                width: root.width * 0.83
+            MDTextField: # TODO: Create a function that the two password must be the same to continue
+                id: confirm_password
+                hint_text: "Confirm Password"
+                hint_text_color_normal: "#817E89"
+                line_color_normal: "#817E89"
+                mode: "rectangle"
+                icon_left: "lock"
+                icon_left_color_normal: "#817E89"
+                pos_hint: {"center_x": .5, "center_y": .25}
+                size_hint_x: None
+                width: root.width * 0.83
+
+            MDFillRoundFlatButton:
+                text: "Create Account"
+                pos_hint: {"center_x": .5, "center_y": .1}
+                size_hint_x: None
+                width: root.width * 0.5
+                on_press: root.manager.current = 'AddTrustedContacts'
+                # on_press: app.create_account(email.text, password.text) # TODO: Create an account to the database/firebase
+                theme_text_color: "Custom"
+                text_color: "#FFFFFF"
+                md_bg_color: "#FF6F61"
+                font_name: "fonts/HelveticaWorld-Bold.ttf"
+
+<AddTrustedContactsScreen>
+    name: 'AddTrustedContacts'
+    MDBoxLayout:
+        orientation: 'vertical'
+        md_bg_color: '#222430'
+        padding: '20dp'
+
+        MDIconButton:
+            icon: "arrow-left"
+            pos_hint: {"center_x": .05, "center_y": .9}
+            user_font_size: "30sp"
+            theme_text_color: "Custom"
+            text_color: "#FFFFFF"
+            on_press: root.manager.current = 'SignUp'
+
+        MDLabel:
+            text: "Add your trusted contacts"
+            halign: 'left'
+            font_size: "22sp"
+            theme_text_color: "Custom"
+            text_color: "#FFFFFF"
+            font_name: "fonts/HelveticaWorld-Bold.ttf"
+            size_hint_y: None
+            height: self.texture_size[1]
+
+        RelativeLayout:
+            ScrollView:
+                size_hint: (1, 0.8)
+                pos_hint: {'top': 1}
+
+                MDList: # TODO: Create an editable and working list of contacts. This is sample only.
+                    TwoLineListItem:
+                        id: contact1
+                        text: "Emergency Contact 1"
+                        secondary_text: "09987654321"
+
+                    TwoLineListItem:
+                        id: contact2
+                        text: "Emergency Contact 2"
+                        secondary_text: "09987654321"
+
+            MDIconButton: # TODO: Create a working button to create contacts
+                icon: "plus-circle-outline"
+                style: "outlined"
+                theme_text_color: "Custom"
+                text_color: 'white'
+                theme_font_size: "Custom"
+                pos_hint: {'right': 0.985, 'top': .35}
+                icon_size: dp(50)
+                elevation: 12
+                on_press: root.manager.current = 'AddContacts'
+
+            MDRoundFlatButton:
+                text: "Maybe Later"
+                pos_hint: {"center_x": .25, "center_y": .1}
+                size_hint_x: None
+                size: dp(250), dp(50)
+                on_press: root.manager.current = 'AskLocation' # TODO: Log in the user after creating
+                line_color: "#FFFFFF"
+                text_color: "#FFFFFF"
+                font_name: "fonts/HelveticaWorld-Bold.ttf"
+                size_hint_x: None
+                width: root.width * 0.4
+
+            MDFillRoundFlatButton:
+                text: "Add"
+                pos_hint: {"center_x": .75, "center_y": .1}
+                size_hint_x: None
+                size: dp(250), dp(50)
+                on_press: root.manager.current = 'AskLocation' # TODO: Log in the user and create contacts to the database
+                md_bg_color: "#0DF5E3"
+                text_color: "#222430"
+                font_name: "fonts/HelveticaWorld-Bold.ttf"
+                size_hint_x: None
+                width: root.width * 0.4
+
+<AskLocationScreen>
+    name: 'AskLocation'
+    MDBoxLayout:
+        orientation: 'vertical'
+        md_bg_color: '#222430'
+        padding: '20dp'
+
+        MDIconButton:
+            icon: "arrow-left"
+            pos_hint: {"center_x": .05, "center_y": .9}
+            user_font_size: "30sp"
+            theme_text_color: "Custom"
+            text_color: "#FFFFFF"
+            on_press: root.manager.current = 'AddTrustedContacts'
+
+        MDLabel:
+            text: "Location"
+            halign: 'left'
+            font_size: "24sp"
+            theme_text_color: "Custom"
+            text_color: "#FFFFFF"
+            font_name: "fonts/HelveticaWorld-Bold.ttf"
+            size_hint_y: None
+            height: self.texture_size[1]
+            padding_y: 10
+
+        MDLabel:
+            text: "To enhance your experience and provide location-specific features, we kindly request your permission to access your device's location while using the app. Your privacy is important to us, and we assure you that your location data will be used solely for app-related functionalities. You can manage these settings in the app's preferences at any time."
+            halign: 'left'
+            font_size: "12sp"
+            theme_text_color: "Custom"
+            text_color: "#FFFFFF"
+            font_name: "fonts/HelveticaWorld-Regular.ttf"
+            size_hint_y: None
+            height: self.texture_size[1]
+
+        MDBoxLayout:
+            orientation: 'horizontal'
+            size_hint_y: None
+            height: dp(100)
+
+            MDIcon:
+                icon: "map-marker"
+                pos_hint: {'left': 0.8}
+                font_size: dp(35)
+                size_hint_x: None
+                width: 150
+                padding_y: 20
+                padding_x: 15
+
+            MDLabel:
+                text: "Location"
+                font_size: 20
+                font_name: "fonts/HelveticaWorld-Bold.ttf"
+                size_hint_y: None
+                height: self.texture_size[1]
+                padding_y: 30
+
+            MDIconButton: # TODO: Implement a working switch button to ask to turn on the location services
+                icon: "toggle-switch"
+                style: "outlined"
+                pos_hint: {'right': 0.985}
+                icon_size: dp(50)
+                elevation: 12
+
+        Widget:
+            size_hint_y: None
+            height: 220
+
+        MDFillRoundFlatButton:
+            text: "I understand"
+            pos_hint: {"center_x": .5, "center_y": .1}
+            size_hint_x: None
+            size: dp(250), dp(50)
+            on_press: root.manager.current = 'LogIn' # TODO: Make sure that the account is created to be log in
+            md_bg_color: "#0DF5E3"
+            text_color: "#222430"
+            font_name: "fonts/HelveticaWorld-Bold.ttf"
+            size_hint_x: None
+            width: root.width * 0.4
+
+<ForgotPasswordScreen>:
+    name: 'ForgotPassword'
+    MDBoxLayout:
+        orientation: 'vertical'
+        padding: "20dp"
+        md_bg_color: '#222430'
+        MDFloatLayout
+            md_bg_color: '#222430'
+
+            MDIconButton:
+                icon: "arrow-left"
+                pos_hint: {"center_x": .05, "center_y": 0.95}
+                user_font_size: "30sp"
+                theme_text_color: "Custom"
+                text_color: "#FFFFFF"
+                on_press: root.manager.current = 'LogIn'
+
+            MDIcon:
+                icon: "images/forgot_password.png"
+                pos_hint: {"center_x": .45, "center_y": .8}
+                font_size: dp(160)
+                size_hint_x: None
+                width: 200
+                padding_y: 5
+
+            MDLabel:
+                text: "Reset Password"
+                pos_hint: {"center_x": .5, "center_y": .6}
+                font_size: "26sp"
+                theme_text_color: "Custom"
+                text_color: "#FFFFFF"
+                font_name: "fonts/HelveticaWorld-Bold.ttf"
+            MDLabel:
+                text: "Enter the phone number or email associated with your account and we'll send a code to reset your password."
+                pos_hint: {"center_x": .5, "center_y": .5}
+                font_size: "13sp"
+                theme_text_color: "Custom"
+                text_color: "#817E89"
+                font_name: "fonts/HelveticaWorld-Bold.ttf"
+            MDTextField:
+                id: username
+                hint_text: "Enter Email or Number"
+                hint_text_color_normal: "#817E89"
+                line_color_normal: "#817E89"
+                mode: "rectangle"
+                icon_left: "email"
+                icon_left_color_normal: "#817E89"
+                pos_hint: {"center_x": .5, "center_y": .35}
+                size_hint_x: None
+                width: root.width * 0.83
+
+            MDFillRoundFlatButton: # TODO: Develop a working forgot password
+                text: "Submit"
+                pos_hint: {"center_x": .5, "center_y": .1}
+                size_hint_x: None
+                size: dp(250), dp(50)
+                on_press: root.manager.current = 'Pin' #
+                md_bg_color: "#0DF5E3"
+                text_color: "#222430"
+                font_name: "fonts/HelveticaWorld-Bold.ttf"
+                size_hint_x: None
+                width: root.width * 0.4
+
+<PinScreen>: # TODO: Enter pin to reset password?
+    name: 'Pin'
+    MDBoxLayout:
+        orientation: 'vertical'
+        padding: "20dp"
+        md_bg_color: '#222430'
+        MDFloatLayout
+            md_bg_color: '#222430'
+
+            MDIconButton:
+                icon: "arrow-left"
+                pos_hint: {"center_x": .05, "center_y": 0.95}
+                user_font_size: "30sp"
+                theme_text_color: "Custom"
+                text_color: "#FFFFFF"
+                on_press: root.manager.current = 'LogIn'
+
+            MDIcon:
+                icon: "images/forgot_password.png"
+                pos_hint: {"center_x": .45, "center_y": .8}
+                font_size: dp(160)
+                size_hint_x: None
+                width: 200
+                padding_y: 5
+
+            MDLabel:
+                text: "Reset Password"
+                pos_hint: {"center_x": .5, "center_y": .6}
+                font_size: "26sp"
+                theme_text_color: "Custom"
+                text_color: "#FFFFFF"
+                font_name: "fonts/HelveticaWorld-Bold.ttf"
+            MDLabel:
+                text: "Enter the 6-digit pin we've sent to your phone number or email."
+                pos_hint: {"center_x": .5, "center_y": .5}
+                font_size: "13sp"
+                theme_text_color: "Custom"
+                text_color: "#817E89"
+                font_name: "fonts/HelveticaWorld-Bold.ttf"
+            MDTextField:
+                id: username
+                hint_text: "Enter 6-digit PIN"
+                hint_text_color_normal: "#817E89"
+                line_color_normal: "#817E89"
+                mode: "rectangle"
+                icon_left: "key"
+                icon_left_color_normal: "#817E89"
+                pos_hint: {"center_x": .5, "center_y": .35}
+                size_hint_x: None
+                width: root.width * 0.83
+                max_text_length: 6
+                input_filter: "int"
+
+            MDFillRoundFlatButton:
+                text: "Submit"
+                pos_hint: {"center_x": .5, "center_y": .1}
+                size_hint_x: None
+                size: dp(250), dp(50)
+                on_press: root.manager.current = 'LogIn' # TODO: Make sure that the password has been reset and applies also to the database
+                md_bg_color: "#0DF5E3"
+                text_color: "#222430"
+                font_name: "fonts/HelveticaWorld-Bold.ttf"
+                size_hint_x: None
+                width: root.width * 0.4

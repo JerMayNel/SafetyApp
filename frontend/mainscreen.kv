@@ -68,30 +68,32 @@ ScreenManager:
                     font_size: 30
                     font_name: "fonts/HelveticaWorld-Bold.ttf"
 
-                MDIconButton:
-                    icon: "plus-circle-outline"
-                    style: "outlined"
-                    theme_text_color: "Custom"
-                    text_color: 'white'
-                    theme_font_size: "Custom"
-                    pos_hint: {'right': 0.985, 'bottom': 1}
-                    icon_size: dp(50)
-                    elevation: 12
-                    on_press: root.manager.current = 'AddContacts'
+                RelativeLayout:
+                    ScrollView:
+                        size_hint: (1, 0.8)
+                        pos_hint: {'top': 0.85}
 
-                ScrollView:
-                    pos_hint: {'top' : 0.85}
+                        MDList:
+                            TwoLineListItem:
+                                id: contact1
+                                text: "Emergency Contact 1"
+                                secondary_text: "09987654321"
 
-                    MDList:
-                        TwoLineListItem:
-                            id: contact1
-                            text: "Emergency Contact 1"
-                            secondary_text: "09987654321"
+                            TwoLineListItem:
+                                id: contact2
+                                text: "Emergency Contact 2"
+                                secondary_text: "09987654321"
 
-                        TwoLineListItem:
-                            id: contact2
-                            text: "Emergency Contact 2"
-                            secondary_text: "09987654321"
+                    MDIconButton:
+                        icon: "plus-circle-outline"
+                        style: "outlined"
+                        theme_text_color: "Custom"
+                        text_color: 'white'
+                        theme_font_size: "Custom"
+                        pos_hint: {'right': 0.985, 'bottom': 1}
+                        icon_size: dp(50)
+                        elevation: 12
+                        on_press: root.manager.current = 'AddContacts'
 
             MDBottomNavigationItem:
                 name: 'screen 3'
